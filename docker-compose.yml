@@ -22,7 +22,7 @@ services:
       - DB_PORT=3306
       - DB_DATABASE=db_test
       - DB_USERNAME=root
-      - DB_PASSWORD=3353
+      - DB_PASSWORD=@Andrade__g4b
 
   frontend:
     build: ./frontend
