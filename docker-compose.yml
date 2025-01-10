@@ -4,8 +4,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: senha
       MYSQL_DATABASE: db_test
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 3353
     volumes:
       - db-data:/var/lib/mysql
 
@@ -30,6 +28,7 @@ services:
       - "8080:8080"
     depends_on:
       - backend
+    command: npm run serve -- --port 8080 --host
 
 volumes:
   db-data:
