@@ -17,7 +17,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:anD8GmnZkrCpwvkuQMp5Rkx2ge0tkNfs7fLmjD5Z+38=',
+    'key' => 'base64:xTKV41/tPYQnaSL0Q2CeGgeiH1vg6zph9FBM+eL5gFc=',
     'previous_keys' => 
     array (
     ),
@@ -163,8 +163,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/framework/cache/data',
-        'lock_path' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/framework/cache/data',
+        'path' => '/var/www/storage/framework/cache/data',
+        'lock_path' => '/var/www/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -219,7 +219,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'desafio_fullstack',
+        'database' => 'laravel',
         'prefix' => '',
         'foreign_key_constraints' => true,
         'busy_timeout' => NULL,
@@ -230,10 +230,10 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'db',
         'port' => '3306',
-        'database' => 'desafio_fullstack',
-        'username' => 'root',
+        'database' => 'laravel',
+        'username' => 'docker',
         'password' => 'SenhaForte123!',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
@@ -250,10 +250,10 @@
       array (
         'driver' => 'mariadb',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'db',
         'port' => '3306',
-        'database' => 'desafio_fullstack',
-        'username' => 'root',
+        'database' => 'laravel',
+        'username' => 'docker',
         'password' => 'SenhaForte123!',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
@@ -270,10 +270,10 @@
       array (
         'driver' => 'pgsql',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'db',
         'port' => '3306',
-        'database' => 'desafio_fullstack',
-        'username' => 'root',
+        'database' => 'laravel',
+        'username' => 'docker',
         'password' => 'SenhaForte123!',
         'charset' => 'utf8',
         'prefix' => '',
@@ -285,10 +285,10 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'db',
         'port' => '3306',
-        'database' => 'desafio_fullstack',
-        'username' => 'root',
+        'database' => 'laravel',
+        'username' => 'docker',
         'password' => 'SenhaForte123!',
         'charset' => 'utf8',
         'prefix' => '',
@@ -311,7 +311,7 @@
       'default' => 
       array (
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'redis',
         'username' => NULL,
         'password' => NULL,
         'port' => '6379',
@@ -320,7 +320,7 @@
       'cache' => 
       array (
         'url' => NULL,
-        'host' => '127.0.0.1',
+        'host' => 'redis',
         'username' => NULL,
         'password' => NULL,
         'port' => '6379',
@@ -336,14 +336,14 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/app/private',
+        'root' => '/var/www/storage/app/private',
         'serve' => true,
         'throw' => false,
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/app/public',
+        'root' => '/var/www/storage/app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
         'throw' => false,
@@ -363,7 +363,7 @@
     ),
     'links' => 
     array (
-      '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/public/storage' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/app/public',
+      '/var/www/public/storage' => '/var/www/storage/app/public',
     ),
   ),
   'logging' => 
@@ -388,14 +388,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/logs/laravel.log',
+        'path' => '/var/www/storage/logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/logs/laravel.log',
+        'path' => '/var/www/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -460,7 +460,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/logs/laravel.log',
+        'path' => '/var/www/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -536,7 +536,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/resources/views/vendor/mail',
+        0 => '/var/www/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -655,7 +655,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/framework/sessions',
+    'files' => '/var/www/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -704,9 +704,9 @@
   array (
     'paths' => 
     array (
-      0 => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/resources/views',
+      0 => '/var/www/resources/views',
     ),
-    'compiled' => '/home/felipe/Área de Trabalho/Teste_Projeto/repositorio_test/backend/storage/framework/views',
+    'compiled' => '/var/www/storage/framework/views',
   ),
   'broadcasting' => 
   array (
