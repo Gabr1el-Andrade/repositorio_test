@@ -19,7 +19,7 @@ export const getProducts = async (search = '', page = 1) => {
 // Função para buscar um produto pelo ID
 export const getProductById = async (id: number) => {
   try {
-    const response = await axios.get(${API_URL}/${id});
+    const response = await axios.get(`${API_URL}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar produto:', error);
@@ -51,12 +51,14 @@ export const updateProduct = async (id: number, product: any) => {
   try {
     const formData = new FormData();
     for (const key in product) {
-      formData.append(key, product[key]);
+      if (product.hasOwnProperty(key)) {
+        formData.append(key, product[key]);
+      }
     }
-    const response = await axios.put(${API_URL}/${id}, formData, {
+    const response = await axios.put(`${API_URL}/${id}`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+        'Content-Type': 'multipart/form-data'
+      }
     });
     return response.data;
   } catch (error) {
@@ -68,7 +70,7 @@ export const updateProduct = async (id: number, product: any) => {
 // Função para excluir um produto
 export const deleteProduct = async (id: number) => {
   try {
-    const response = await axios.delete(${API_URL}/${id});
+    const response = await axios.get(`${API_URL}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao excluir produto:', error);

@@ -45,7 +45,7 @@
   
   <script setup>
 import { ref } from 'vue';
-import { getProducts, deleteProduct } from '../services/productService';
+import { getProducts, deleteProduct } from '../service/productService';
 
 const products = ref([]);
 const search = ref('');

@@ -67,7 +67,7 @@
   
   <script setup>
   import { ref } from 'vue';
-  import { createProduct, updateProduct, getProductById } from '../services/productService';
+  import { createProduct, updateProduct, getProductById } from '../service/productService';
   
   const product = ref({
     name: '',
