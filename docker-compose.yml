@@ -2,8 +2,8 @@ services:
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ROOT_PASSWORD: senha
-      MYSQL_DATABASE: db_test
+      MYSQL_ROOT_PASSWORD: SenhaForte123!
+      MYSQL_DATABASE: desafio_fullstack
     volumes:
       - db-data:/var/lib/mysql
 
@@ -18,9 +18,9 @@ services:
     environment:
       - DB_HOST=db
       - DB_PORT=3306
-      - DB_DATABASE=db_test
+      - DB_DATABASE=desafio_fullstack
       - DB_USERNAME=root
-      - DB_PASSWORD=@Andrade__g4b
+      - DB_PASSWORD=SenhaForte123!
 
   frontend:
     build: ./frontend
