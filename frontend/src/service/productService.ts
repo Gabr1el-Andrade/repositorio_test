@@ -1,40 +1,45 @@
-import axios from 'axios';
+import api from '../api';
 
-// Base URL para a API (ajuste conforme necessário)
-const API_URL = 'http://localhost:9000/api/produtos';
+export interface Produto {
+  id?: number;
+  name: string;
+  description: string;
+  price: number;
+  data_validade: string;
+  image: File | string;
+  categoria_id: number;
+}
 
-// Função para buscar produtos (com suporte à busca e paginação)
-export const getProducts = async (search = '', page = 1) => {
+export const getProducts = async (search = '', page = 1): Promise<Produto[]> => {
   try {
-    const response = await axios.get(API_URL, {
+    const response = await api.get('/produtos', {
       params: { search, page },
     });
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar produtos:', error);
-    throw error;
+    throw new Error('Não foi possível buscar os produtos.');
   }
 };
 
-// Função para buscar um produto pelo ID
-export const getProductById = async (id: number) => {
+export const getProductById = async (id: number): Promise<Produto> => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await api.get(`/produtos/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar produto:', error);
-    throw error;
+    throw new Error(`Não foi possível buscar o produto com ID ${id}.`);
   }
 };
 
-// Função para criar um novo produto
-export const createProduct = async (product: any) => {
+export const createProduct = async (product: Produto): Promise<Produto> => {
   try {
     const formData = new FormData();
-    for (const key in product) {
-      formData.append(key, product[key]);
-    }
-    const response = await axios.post(API_URL, formData, {
+    Object.entries(product).forEach(([key, value]) => {
+      formData.append(key, value instanceof File ? value : String(value));
+    });
+
+    const response = await api.post('/produtos', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -42,38 +47,34 @@ export const createProduct = async (product: any) => {
     return response.data;
   } catch (error) {
     console.error('Erro ao criar produto:', error);
-    throw error;
+    throw new Error('Não foi possível criar o produto.');
   }
 };
 
-// Função para atualizar um produto
-export const updateProduct = async (id: number, product: any) => {
+export const updateProduct = async (id: number, product: Produto): Promise<Produto> => {
   try {
     const formData = new FormData();
-    for (const key in product) {
-      if (product.hasOwnProperty(key)) {
-        formData.append(key, product[key]);
-      }
-    }
-    const response = await axios.put(`${API_URL}/${id}`, formData, {
+    Object.entries(product).forEach(([key, value]) => {
+      formData.append(key, value instanceof File ? value : String(value));
+    });
+
+    const response = await api.put(`/produtos/${id}`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+        'Content-Type': 'multipart/form-data',
+      },
     });
     return response.data;
   } catch (error) {
     console.error('Erro ao atualizar produto:', error);
-    throw error;
+    throw new Error(`Não foi possível atualizar o produto com ID ${id}.`);
   }
 };
 
-// Função para excluir um produto
-export const deleteProduct = async (id: number) => {
+export const deleteProduct = async (id: number): Promise<void> => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
-    return response.data;
+    await api.delete(`/produtos/${id}`);
   } catch (error) {
     console.error('Erro ao excluir produto:', error);
-    throw error;
+    throw new Error(`Não foi possível excluir o produto com ID ${id}.`);
   }
 };
