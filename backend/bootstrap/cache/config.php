@@ -1,9 +1,9 @@
 <?php return array (
-  1 => 'cors',
-  2 => 'view',
-  4 => 'broadcasting',
-  7 => 'concurrency',
-  11 => 'hashing',
+  2 => 'broadcasting',
+  4 => 'concurrency',
+  5 => 'cors',
+  8 => 'hashing',
+  14 => 'view',
   'app' => 
   array (
     'name' => 'Laravel',
@@ -17,7 +17,7 @@
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
     'cipher' => 'AES-256-CBC',
-    'key' => 'base64:xTKV41/tPYQnaSL0Q2CeGgeiH1vg6zph9FBM+eL5gFc=',
+    'key' => 'base64:jcOV4GgGqstmK+WlI+YxE8Kz2BPd11vNTJjSifNS4sA=',
     'previous_keys' => 
     array (
     ),
@@ -219,7 +219,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'laravel',
+        'database' => 'db_test',
         'prefix' => '',
         'foreign_key_constraints' => true,
         'busy_timeout' => NULL,
@@ -230,11 +230,11 @@
       array (
         'driver' => 'mysql',
         'url' => NULL,
-        'host' => 'db',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'docker',
-        'password' => 'SenhaForte123!',
+        'database' => 'db_test',
+        'username' => 'root',
+        'password' => '@Andrade__g4b',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -250,11 +250,11 @@
       array (
         'driver' => 'mariadb',
         'url' => NULL,
-        'host' => 'db',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'docker',
-        'password' => 'SenhaForte123!',
+        'database' => 'db_test',
+        'username' => 'root',
+        'password' => '@Andrade__g4b',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -270,11 +270,11 @@
       array (
         'driver' => 'pgsql',
         'url' => NULL,
-        'host' => 'db',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'docker',
-        'password' => 'SenhaForte123!',
+        'database' => 'db_test',
+        'username' => 'root',
+        'password' => '@Andrade__g4b',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -285,11 +285,11 @@
       array (
         'driver' => 'sqlsrv',
         'url' => NULL,
-        'host' => 'db',
+        'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'laravel',
-        'username' => 'docker',
-        'password' => 'SenhaForte123!',
+        'database' => 'db_test',
+        'username' => 'root',
+        'password' => '@Andrade__g4b',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -311,7 +311,7 @@
       'default' => 
       array (
         'url' => NULL,
-        'host' => 'redis',
+        'host' => '127.0.0.1',
         'username' => NULL,
         'password' => NULL,
         'port' => '6379',
@@ -320,7 +320,7 @@
       'cache' => 
       array (
         'url' => NULL,
-        'host' => 'redis',
+        'host' => '127.0.0.1',
         'username' => NULL,
         'password' => NULL,
         'port' => '6379',
@@ -672,42 +672,6 @@
     'same_site' => 'lax',
     'partitioned' => false,
   ),
-  'cors' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'api/*',
-      1 => 'sanctum/csrf-cookie',
-    ),
-    'allowed_methods' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins' => 
-    array (
-      0 => '*',
-    ),
-    'allowed_origins_patterns' => 
-    array (
-    ),
-    'allowed_headers' => 
-    array (
-      0 => '*',
-    ),
-    'exposed_headers' => 
-    array (
-    ),
-    'max_age' => 0,
-    'supports_credentials' => false,
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/var/www/resources/views',
-    ),
-    'compiled' => '/var/www/storage/framework/views',
-  ),
   'broadcasting' => 
   array (
     'default' => 'log',
@@ -768,6 +732,34 @@
   array (
     'default' => 'process',
   ),
+  'cors' => 
+  array (
+    'paths' => 
+    array (
+      0 => 'api/*',
+      1 => 'sanctum/csrf-cookie',
+    ),
+    'allowed_methods' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins' => 
+    array (
+      0 => '*',
+    ),
+    'allowed_origins_patterns' => 
+    array (
+    ),
+    'allowed_headers' => 
+    array (
+      0 => '*',
+    ),
+    'exposed_headers' => 
+    array (
+    ),
+    'max_age' => 0,
+    'supports_credentials' => false,
+  ),
   'hashing' => 
   array (
     'driver' => 'bcrypt',
@@ -784,6 +776,14 @@
       'verify' => true,
     ),
     'rehash_on_login' => true,
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/var/www/resources/views',
+    ),
+    'compiled' => '/var/www/storage/framework/views',
   ),
   'tinker' => 
   array (
